@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, ScrollView, View } from "react-native";
 
 import Login from "./screens/Login";
 import Profile from "./screens/Profile";
@@ -11,6 +10,7 @@ import { LoginContext } from "./context/LoginContext";
 
 const Stack = createNativeStackNavigator();
 
+//Root Screen
 export default function App() {
   const [userName, setUserName] = useState("");
 

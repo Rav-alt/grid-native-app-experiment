@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet, TextInput } from "react-native";
 import { LoginContext } from "../context/LoginContext";
 
 const Profile = ({ navigation }: any) => {
-  const { userName } = useContext(LoginContext);
-
+  const { userName, setUserName } = useContext(LoginContext);
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <Text style={styles.username}>Username: {userName}</Text>
 
+
+      <TextInput style={styles.input}
+      placeholder="change username?"
+      onChangeText={(text) => setUserName(text)}
+      />      
       <View style={styles.button}>
         <Button
           title="List of Users"
@@ -35,6 +40,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#8fc0ee",
     padding: 20,
     justifyContent: "center",
+  },
+  input: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: "#ccc",
   },
   title: {
     fontSize: 28,

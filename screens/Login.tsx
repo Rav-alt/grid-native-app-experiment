@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { LoginContext } from "../context/LoginContext";
 
+
+//Login Screen
 const Login = ({ navigation }: any) => {
   const { setUserName } = useContext(LoginContext);
 
@@ -11,7 +13,7 @@ const Login = ({ navigation }: any) => {
       <TextInput
         style={styles.input}
         placeholder="User Name"
-        onChangeText={(text) => setUserName(text)}
+        onChangeText={(string) => setUserName(string)}
       />
       <View style={styles.button}>
         <Button
