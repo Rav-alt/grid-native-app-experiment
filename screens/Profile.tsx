@@ -30,6 +30,14 @@ const Profile = ({ navigation }: any) => {
           onPress={() => navigation.navigate("Post")}
         />
       </View>
+
+      <View style={styles.button}>
+        <Button
+          title="List of Image"
+          color="#000000"
+          onPress={() => navigation.navigate("Image")}
+        />
+      </View>
     </View>
   );
 };

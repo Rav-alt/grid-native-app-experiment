@@ -1,25 +1,15 @@
-import React, { useState, useEffect, useCallback, } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { ScrollView, Text, StyleSheet, View, TextInput, Button } from "react-native";
 import { useFetchpost } from "../hooks/useFetchpost";
+import { useAddPost } from "../hooks/useAddPost";
 
-const Post = () => {
-  const [newPost, setNewpost] = useState("");
-  const [newPostbody, setNewpostbody] = useState("")
-  const {postList, setPostlist} = useFetchpost();
 
-  const addPost = useCallback(() => {
-    if (newPost.trim() === "" || newPostbody.trim() === "") return;
-    const newItem = {
-      id: Date.now(),
-      title: newPost,
-      body: newPostbody
-    };
-    setPostlist((prev) => [...prev, newItem]);
-    setNewpost("")
-    setNewpostbody("")
-  }, [newPost, newPostbody, setPostlist]
-);
+const Post = ({navigation}: any) => {
+  const {newPost, newPostbody, postList, setPostlist, setNewpostbody, setNewpost, addPost} = useAddPost();
 
+  const reversePost = useMemo(() => {
+    return[...postList].reverse()
+  }, [postList]);
 
   return (
     <ScrollView style={styles.container}>
@@ -44,7 +34,7 @@ const Post = () => {
       </View>
 
       <View>
-      {[...postList].reverse().map((item: any) => (
+      {reversePost.map((item: any) => (
         <View key={item.id} style={styles.item}>
           <Text style={styles.header}>{item.title}</Text>
           <Text style={styles.body}>{item.body}</Text>

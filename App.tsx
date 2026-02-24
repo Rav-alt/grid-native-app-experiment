@@ -7,13 +7,16 @@ import Profile from "./screens/Profile";
 import User from "./screens/User";
 import Post from "./screens/Post";
 import { LoginContext } from "./context/LoginContext";
+import AddPost from "./screens/AddPost";
+import { useFetchpost } from "./hooks/useFetchpost";
+import ImageScreen from "./screens/Image";
 
 const Stack = createNativeStackNavigator();
 
 //Root Screen
 export default function App() {
   const [userName, setUserName] = useState("");
-
+  
   return (
     <LoginContext.Provider value={{ userName, setUserName }}>
       <NavigationContainer>
@@ -22,6 +25,8 @@ export default function App() {
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="User" component={User} />
           <Stack.Screen name="Post" component={Post} />
+          <Stack.Screen name="Image" component={ImageScreen} />
+          <Stack.Screen name="Add Post" component={AddPost} />
         </Stack.Navigator>
       </NavigationContainer>
     </LoginContext.Provider>

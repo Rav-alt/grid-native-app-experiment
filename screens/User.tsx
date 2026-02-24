@@ -6,7 +6,7 @@ const User = () => {
   const {userList, setUserlist} = useFetchuser();
   const [newUser, setNewuser] = useState("");
 
-  const addUser = useCallback(() => {
+  const addUser = () => {
     if (newUser.trim() === "") return;
 
     const newItem = {
@@ -16,8 +16,7 @@ const User = () => {
     setUserlist([...userList, newItem]);
     setNewuser("")
 
-  }, [newUser, setUserlist]
-);
+  };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.container}>
